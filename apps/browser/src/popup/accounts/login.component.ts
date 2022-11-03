@@ -18,6 +18,7 @@ import { StateService } from "@bitwarden/common/abstractions/state.service";
 import { SyncService } from "@bitwarden/common/abstractions/sync/sync.service.abstraction";
 import { Utils } from "@bitwarden/common/misc/utils";
 
+
 @Component({
   selector: "app-login",
   templateUrl: "login.component.html",
@@ -66,6 +67,46 @@ export class LoginComponent extends BaseLoginComponent {
       await syncService.fullSync(true);
     };
     super.successRoute = "/tabs/vault";
+    // console.log(123)
+    // window.addEventListener('hashchange',(event)=>{
+        
+        const list = document.getElementsByTagName('input')
+      function sleep(ms: number) {
+          return new Promise(resolve => setTimeout(resolve, ms));
+      }
+      async function sleep2() {       
+              await sleep(1000);
+              for (let index = 0; index < list.length; index++) {
+                // console.log(list[index].type)
+              if (list[index].type == "password") {
+                // console.log(222)
+                const pass = list[index]
+                const rect1 = pass.getBoundingClientRect()
+        
+                // console.log("loadddddd")
+                const pass2 = pass.cloneNode() as HTMLInputElement
+                const tempId = "passwordTemp" + index
+                pass2.id = tempId
+                pass2.type = "text"
+                pass2.style.position = "absolute"
+                pass2.style.background = "red"
+                pass2.style.color = "#00000000"
+                pass.parentNode.insertBefore(pass2,pass.nextSibling)
+        
+                pass2.addEventListener('input',() => {
+                    list[index].value = (document.getElementById("passwordTemp" + index) as HTMLInputElement).value
+                    // pass.value = document.getElementById(tempId).value   多个匹配会出现错误
+                }) ;
+                const rect2 = pass2.getBoundingClientRect()
+                const offsetTop = rect2.top - rect1.top
+                const offsetLeft = rect2.left - rect1.left
+                pass2.style.top = parseInt(window.getComputedStyle(pass2 ,null).getPropertyValue('top').replace("px","")) - offsetTop + "px"
+                pass2.style.left = parseInt(window.getComputedStyle(pass2 ,null).getPropertyValue('left').replace("px","")) - offsetLeft + "px"
+                pass2.style.width = rect1.width + "px"
+            }
+        }
+      }
+      sleep2();
   }
 
   settings() {
