@@ -8,7 +8,11 @@ export class PasswordGeneratorPolicyOptions extends Domain {
   useNumbers = false;
   numberCount = 0;
   useSpecial = false;
+  useSpecial1 = false;
+  useSpecial2 = false;
   specialCount = 0;
+  specialCount1 = 0;
+  specialCount2 = 0;
   minNumberWords = 0;
   capitalize = false;
   includeNumber = false;
@@ -23,6 +27,8 @@ export class PasswordGeneratorPolicyOptions extends Domain {
       this.useLowercase ||
       this.useNumbers ||
       this.useSpecial ||
+      this.useSpecial1 ||
+      this.useSpecial2 ||
       this.minNumberWords > 0 ||
       this.capitalize ||
       this.includeNumber

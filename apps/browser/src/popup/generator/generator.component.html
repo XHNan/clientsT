@@ -221,7 +221,7 @@
             />
           </div>
           <div class="box-content-row box-content-row-checkbox" appBoxRow>
-            <label for="special">!@#$%^&*</label>
+            <label for="special">KanjiTop1000</label>
             <input
               id="special"
               type="checkbox"
@@ -229,6 +229,28 @@
               attr.aria-label="{{ 'specialCharacters' | i18n }}"
               [disabled]="enforcedPasswordPolicyOptions.useSpecial"
               [(ngModel)]="passwordOptions.special"
+            />
+          </div>
+          <div class="box-content-row box-content-row-checkbox" appBoxRow>
+            <label for="special">Hiragana</label>
+            <input
+              id="special"
+              type="checkbox"
+              (change)="savePasswordOptions()"
+              attr.aria-label="{{ 'specialCharacters1' | i18n }}"
+              [disabled]="enforcedPasswordPolicyOptions.useSpecial1"
+              [(ngModel)]="passwordOptions.special1"
+            />
+          </div>
+          <div class="box-content-row box-content-row-checkbox" appBoxRow>
+            <label for="special">Katakana</label>
+            <input
+              id="special"
+              type="checkbox"
+              (change)="savePasswordOptions()"
+              attr.aria-label="{{ 'specialCharacters2' | i18n }}"
+              [disabled]="enforcedPasswordPolicyOptions.useSpecial2"
+              [(ngModel)]="passwordOptions.special2"
             />
           </div>
         </div>

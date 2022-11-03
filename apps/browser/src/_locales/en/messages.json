@@ -247,6 +247,12 @@
   "specialCharacters": {
     "message": "Special characters (!@#$%^&*)"
   },
+  "specialCharacters1": {
+    "message": "Special hiragana characters"
+  },
+  "specialCharacters2": {
+    "message": "Special katakana characters"
+  },
   "numWords": {
     "message": "Number of words"
   },

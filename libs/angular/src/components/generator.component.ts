@@ -223,7 +223,9 @@ export class GeneratorComponent implements OnInit {
       !this.passwordOptions.uppercase &&
       !this.passwordOptions.lowercase &&
       !this.passwordOptions.number &&
-      !this.passwordOptions.special
+      !this.passwordOptions.special &&
+      !this.passwordOptions.special1 &&
+      !this.passwordOptions.special2
     ) {
       this.passwordOptions.lowercase = true;
       if (this.win != null) {

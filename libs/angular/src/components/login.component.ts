@@ -197,6 +197,8 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
       lowercase: true,
       numbers: true,
       special: false,
+      special1: false,
+      special2: false,
     };
     const state = await this.passwordGenerationService.generatePassword(passwordOptions);
     const ssoCodeVerifier = await this.passwordGenerationService.generatePassword(passwordOptions);
