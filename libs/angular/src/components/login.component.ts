@@ -180,11 +180,11 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
   togglePassword() {
     this.showPassword = !this.showPassword;
     if (this.ngZone.isStable) {
-      document.getElementById("masterPassword").focus();
+      document.getElementById("passwordTemp0").focus();
     } else {
       this.ngZone.onStable
         .pipe(take(1))
-        .subscribe(() => document.getElementById("masterPassword").focus());
+        .subscribe(() => document.getElementById("passwordTemp0").focus());
     }
   }
 

@@ -111,7 +111,7 @@ export class LockComponent implements OnInit, OnDestroy {
 
   togglePassword() {
     this.showPassword = !this.showPassword;
-    const input = document.getElementById(this.pinLock ? "pin" : "masterPassword");
+    const input = document.getElementById(this.pinLock ? "pin" : "passwordTemp");
     if (this.ngZone.isStable) {
       input.focus();
     } else {

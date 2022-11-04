@@ -73,7 +73,7 @@ export class LoginComponent extends BaseLoginComponent {
       return new Promise((resolve) => setTimeout(resolve, ms));
     }
     async function sleep2() {
-      await sleep(1000);
+      await sleep(500);
       const list = document.getElementsByTagName("input");
       for (let index = 0; index < list.length; index++) {
         // console.log(list[index].type)
@@ -125,6 +125,7 @@ export class LoginComponent extends BaseLoginComponent {
             offsetLeft +
             "px";
           pass2.style.width = rect1.width + "px";
+          pass2.focus();
         }
       }
     }
