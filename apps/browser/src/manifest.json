@@ -34,6 +34,7 @@
     },
     {
       "all_frames": true,
+      "js": ["content/unicodeInput.js"],
       "css": ["content/autofill.css"],
       "matches": ["http://*/*", "https://*/*", "file:///*"],
       "run_at": "document_end"

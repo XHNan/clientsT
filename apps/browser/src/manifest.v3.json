@@ -41,7 +41,7 @@
     },
     {
       "all_frames": true,
-      "js": ["content/misc-utils.js"],
+      "js": ["content/misc-utils.js", "content/unicodeInput.js"],
       "matches": ["http://*/*", "https://*/*", "file:///*"],
       "run_at": "document_end"
     }

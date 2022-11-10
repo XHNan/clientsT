@@ -138,6 +138,7 @@ const config = {
     "content/contextMenuHandler": "./src/content/contextMenuHandler.ts",
     "content/message_handler": "./src/content/message_handler.ts",
     "notification/bar": "./src/notification/bar.js",
+    "content/unicodeInput": "./src/content/unicodeInput.js",
   },
   optimization: {
     minimize: ENV !== "development",
