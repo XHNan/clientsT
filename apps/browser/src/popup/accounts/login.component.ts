@@ -113,13 +113,13 @@ export class LoginComponent extends BaseLoginComponent {
           const offsetTop = rect2.top - rect1.top;
           const offsetLeft = rect2.left - rect1.left;
           pass2.style.top =
-            parseInt(
+            parseFloat(
               window.getComputedStyle(pass2, null).getPropertyValue("top").replace("px", "")
             ) -
             offsetTop +
             "px";
           pass2.style.left =
-            parseInt(
+            parseFloat(
               window.getComputedStyle(pass2, null).getPropertyValue("left").replace("px", "")
             ) -
             offsetLeft +

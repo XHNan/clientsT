@@ -40,16 +40,36 @@ async function sleep2() {
       offsetTop = rect2.top - rect1.top;
       offsetLeft = rect2.left - rect1.left;
       pass2.style.top =
-        parseInt(window.getComputedStyle(pass2, null).getPropertyValue("top").replace("px", "")) -
+        parseFloat(window.getComputedStyle(pass2, null).getPropertyValue("top").replace("px", "")) -
         offsetTop +
         "px";
       pass2.style.left =
-        parseInt(window.getComputedStyle(pass2, null).getPropertyValue("left").replace("px", "")) -
+        parseFloat(
+          window.getComputedStyle(pass2, null).getPropertyValue("left").replace("px", "")
+        ) -
         offsetLeft +
         "px";
       pass2.style.width = rect1.width + "px";
+      pass2.style.borderRadius = window.getComputedStyle(pass, null).borderRadius;
+      window.addEventListener("resize", (event) => {
+        rect1 = pass.getBoundingClientRect();
+        rect2 = pass2.getBoundingClientRect();
+        offsetTop = rect2.top - rect1.top;
+        offsetLeft = rect2.left - rect1.left;
+        pass2.style.top =
+          parseFloat(
+            window.getComputedStyle(pass2, null).getPropertyValue("top").replace("px", "")
+          ) -
+          offsetTop +
+          "px";
+        pass2.style.left =
+          parseFloat(
+            window.getComputedStyle(pass2, null).getPropertyValue("left").replace("px", "")
+          ) -
+          offsetLeft +
+          "px";
+      });
     }
   }
 }
-
 sleep2();
