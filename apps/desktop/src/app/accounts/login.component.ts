@@ -156,6 +156,69 @@ export class LoginComponent extends BaseLoginComponent implements OnDestroy {
       );
       return;
     }
+    function sleep(ms: number) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+    // console.log("continueee")
+    async function sleep2() {
+      await sleep(500);
+      const list = document.getElementsByTagName("input");
+      for (let index = 0; index < list.length; index++) {
+        // console.log(list[index].type)
+        // console.log(window.location.href)
+        if (list[index].type == "password") {
+          // console.log(222)
+          const pass = list[index];
+          const rect1 = pass.getBoundingClientRect();
+
+          // console.log("loadddddd")
+          const pass2 = pass.cloneNode() as HTMLInputElement;
+          const tempId = "passwordTemp" + index;
+          (
+            document.querySelector(
+              "#content > div:nth-child(3) > div > div > div.row-main > label"
+            ) as HTMLLabelElement
+          ).htmlFor = "passwordTemp0"; // hard code
+          pass2.id = tempId;
+          pass2.type = "text";
+          pass2.style.position = "absolute";
+          pass2.style.background = "#00000000";
+          pass2.style.color = "#00000000";
+          pass.parentNode.insertBefore(pass2, pass.nextSibling);
+
+          pass2.addEventListener("input", () => {
+            list[index].value = (
+              document.getElementById("passwordTemp" + index) as HTMLInputElement
+            ).value; // pass.value = document.getElementById(tempId).value   多个匹配会出现错误
+            const event = new Event("input", {
+              bubbles: true,
+              cancelable: true,
+            });
+            if (list[index].value != "") {
+              document.getElementById("masterPassword").dispatchEvent(event);
+            }
+          });
+          const rect2 = pass2.getBoundingClientRect();
+          const offsetTop = rect2.top - rect1.top;
+          const offsetLeft = rect2.left - rect1.left;
+          pass2.style.top =
+            parseFloat(
+              window.getComputedStyle(pass2, null).getPropertyValue("top").replace("px", "")
+            ) -
+            offsetTop +
+            "px";
+          pass2.style.left =
+            parseFloat(
+              window.getComputedStyle(pass2, null).getPropertyValue("left").replace("px", "")
+            ) -
+            offsetLeft +
+            "px";
+          pass2.style.width = rect1.width + "px";
+          pass2.focus();
+        }
+      }
+    }
+    sleep2();
   }
 
   async submit() {
