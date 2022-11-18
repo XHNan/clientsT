@@ -10,9 +10,11 @@ export class PasswordGeneratorPolicyOptions extends Domain {
   useSpecial = false;
   useSpecial1 = false;
   useSpecial2 = false;
+  useSpecial3 = false;
   specialCount = 0;
   specialCount1 = 0;
   specialCount2 = 0;
+  specialCount3 = 0;
   minNumberWords = 0;
   capitalize = false;
   includeNumber = false;

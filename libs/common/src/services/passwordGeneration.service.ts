@@ -28,6 +28,8 @@ const DefaultOptions: PasswordGeneratorOptions = {
   minSpecial1: 1,
   special2: false,
   minSpecial2: 1,
+  special3: false,
+  minSpecial3: 1,
   type: "password",
   numWords: 3,
   wordSeparator: "-",
@@ -91,6 +93,11 @@ export class PasswordGenerationService implements PasswordGenerationServiceAbstr
         positions.push("y");
       }
     }
+    if (o.special3 && o.minSpecial3 > 0) {
+      for (let i = 0; i < o.minSpecial3; i++) {
+        positions.push("e");
+      }
+    }
     while (positions.length < o.length) {
       positions.push("a");
     }
@@ -144,6 +151,11 @@ export class PasswordGenerationService implements PasswordGenerationServiceAbstr
       allCharSet += specialCharSet2;
     }
 
+    const specialCharSet3 = "😊😭🐦🐻🐱🌲😀🙏💪👍🚀🚩🏆🎯🏁📣📢🔊🔔🌷🌱🌈"; // emoji
+    if (o.special3) {
+      allCharSet += specialCharSet3;
+    }
+
     let password = "";
     for (let i = 0; i < o.length; i++) {
       let positionChars: string;
@@ -166,15 +178,20 @@ export class PasswordGenerationService implements PasswordGenerationServiceAbstr
         case "y":
           positionChars = specialCharSet2;
           break;
+        case "e":
+          positionChars = specialCharSet3;
+          break;
         case "a":
           positionChars = allCharSet;
           break;
         default:
           break;
       }
-
-      const randomCharIndex = await this.cryptoService.randomNumber(0, positionChars.length - 1);
-      password += positionChars.charAt(randomCharIndex);
+      const arr = Array.from(positionChars);
+      const randomCharIndex = await this.cryptoService.randomNumber(0, arr.length - 1);
+      password += arr[randomCharIndex];
+      // const randomCharIndex = await this.cryptoService.randomNumber(0, positionChars.length - 1);
+      // password += positionChars.charAt(randomCharIndex);
     }
 
     return password;

@@ -13,6 +13,8 @@ export type PasswordGeneratorOptions = {
   minSpecial1?: number;
   special2?: boolean; // ア
   minSpecial2?: number;
+  special3?: boolean; // emoji
+  minSpecial3?: number;
   numWords?: number;
   wordSeparator?: string;
   capitalize?: boolean;

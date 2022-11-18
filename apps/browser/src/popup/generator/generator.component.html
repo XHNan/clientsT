@@ -253,6 +253,17 @@
               [(ngModel)]="passwordOptions.special2"
             />
           </div>
+          <div class="box-content-row box-content-row-checkbox" appBoxRow>
+            <label for="special">Emoji</label>
+            <input
+              id="special"
+              type="checkbox"
+              (change)="savePasswordOptions()"
+              attr.aria-label="{{ 'specialCharacters3' | i18n }}"
+              [disabled]="enforcedPasswordPolicyOptions.useSpecial3"
+              [(ngModel)]="passwordOptions.special3"
+            />
+          </div>
         </div>
       </div>
       <div class="box">
