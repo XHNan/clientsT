@@ -278,9 +278,4 @@ export class LoginComponent extends CaptchaProtectedComponent implements OnInit 
       this.showLoginWithDevice = false;
     }
   }
-
-  protected focusInput() {
-    const email = this.loggedEmail;
-    document.getElementById(email == null || email === "" ? "email" : "masterPassword").focus();
-  }
 }
